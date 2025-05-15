@@ -17,7 +17,7 @@ All costs are based on an estimated monthly basis in USD.
 
 The Lacework agent is a minimal footprint agent is installed on AWS EC2 instances including EKS nodes. CPU usage is typically <1% depending on workload. Data egress is outbound only, typically 100 MB per agent per day. 
 
-- Egress cost estimation: 1GB × $0.09/GB = $0.27 per server (EC2) with agent per month.
+- Egress cost estimation: 3GB × $0.09/GB = $0.27 per server (EC2) with agent per month.
 
 ## AWS Agentless Workload Scanning
 
