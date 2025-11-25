@@ -2,43 +2,46 @@
 
 ## Introduction
 
-When Lacework FortiCNAPP is integrated with AWS, it is helpful to understand any costs associated with the integration. This document outlines the potential additional AWS costs associated with the integration.
+This document outlines additional AWS costs when using Lacework FortiCNAPP.
 
 ## Executive Summary of AWS Costs
 
-All costs are based on an estimated monthly basis in USD.
+All costs are monthly estimates in USD.
+
+- Agentless Workload Scanning: ~$1.00 per workload per month (inclusive of ECS compute and snapshot storage)
+
+Additional costs if AWS accounts are in a different region from the Lacework instance (eg. ap-southeast-2 for Sydney, us-east-1 for Virginia, eu-central-1 for Frankfurt, ap-southeast-1 for Singapore):
 
 - Agent Egress: $0.27 per server (EC2) with agent per month
-- Agentless Storage: $1.00 per server (EC2) per month for S3 Local snapshot storage
-- Agentless Compute: $15.00 per month (ECS Task for snapshot/scan)
 - CloudTrail Egress: $0.45 per account per month for CloudTrail
+
+Disclaimer: These are estimates only. Actual costs may vary. Test in your own AWS account to determine actual expenses.
 
 ## Lacework Agent
 
-The Lacework agent is a minimal footprint agent is installed on AWS EC2 instances including EKS nodes. CPU usage is typically <1% depending on workload. Data egress is outbound only, typically 100 MB per agent per day. 
+The Lacework agent is installed on EC2 instances and EKS nodes. CPU usage is typically <1%. Data egress is ~100 MB per agent per day.
 
-- Egress cost estimation: 3GB × $0.09/GB = $0.27 per server (EC2) with agent per month.
+- Egress cost: 3GB × $0.09/GB = $0.27 per server per month
 
 ## AWS Agentless Workload Scanning
 
-The Lacework Agentless Workload Scanning is an ECS task scheduled to run on a regular basis. Data egress is scan metadata only. There are two sources of cost for this service:
+An ECS task runs on a regular schedule. Data egress is scan metadata only.
 
-- ECS Task cost estimation: ~$15.00 of compute per month
-- S3 for Local snapshot storage cost estimation: ~$1.00 per server (EC2) per month
+- Cost: ~$1.00 per workload per month (includes ECS compute and snapshot storage)
 
 ## AWS Account Inventory
 
-The AWS Account Inventory configuration for compliance reports is pulled directly from AWS APIs, so there is no egress cost.
+Pulled directly from AWS APIs. No egress cost.
 
 ## AWS CloudTrail
 
-Lacework analyzes AWS CloudTrail management events from the CloudTrail S3 bucket. The egress cost is based on the size of the CloudTrail logs.
+Lacework analyzes CloudTrail management events from the S3 bucket.
 
-- CloudTrail egress cost estimation: 5GB at $0.09/GB = $0.45 per account per month
+- Egress cost: 5GB × $0.09/GB = $0.45 per account per month
 
 ## AWS Additional Cloudtrails
 
-AWS provides the first CloudTrail in an account for free. Additional CloudTrail buckets are charged per month. For a Lacework trial, a new CloudTrail bucket may be created, which is not free. It is recommended instead to point Lacework to the existing organization CloudTrail bucket.
+The first CloudTrail in an account is free. Additional buckets are charged monthly. For trials, point Lacework to your existing organization CloudTrail bucket instead of creating a new one.
 
 
 
