@@ -1,21 +1,28 @@
-# Lacework FortiCNAPP AWS Costs
+# Lacework FortiCNAPP Cloud Costs
 
 ## Introduction
 
-This document outlines additional AWS costs when using Lacework FortiCNAPP.
+This document outlines additional cloud costs when using Lacework FortiCNAPP for AWS and Azure.
 
-## Executive Summary of AWS Costs
+## Executive Summary
 
 All costs are monthly estimates in USD.
 
-- Agentless Workload Scanning: ~$1.00 per workload per month (inclusive of ECS compute and snapshot storage)
+### AWS
+
+- Agentless Workload Scanning: ~$1.00 per workload per month (at scale,inclusive of ECS compute and snapshot storage)
 
 Additional costs if AWS accounts are in a different region from the Lacework instance (eg. ap-southeast-2 for Sydney, us-east-1 for Virginia, eu-central-1 for Frankfurt, ap-southeast-1 for Singapore):
 
 - Agent Egress: $0.27 per server (EC2) with agent per month
 - CloudTrail Egress: $0.45 per account per month for CloudTrail
 
-Disclaimer: These are estimates only. Actual costs may vary. Test in your own AWS account to determine actual expenses.
+### Azure
+
+- Agentless Workload Scanning: ~$0.50 per VM per month (at scale, inclusive of storage, compute and NAT gateway)
+  - NAT Gateway: $35.00 flat per month
+
+Disclaimer: These are estimates only. Actual costs may vary. Test in your own cloud account to determine actual expenses.
 
 ## Lacework Agent
 
@@ -42,6 +49,13 @@ Lacework analyzes CloudTrail management events from the S3 bucket.
 ## AWS Additional Cloudtrails
 
 The first CloudTrail in an account is free. Additional buckets are charged monthly. For trials, point Lacework to your existing organization CloudTrail bucket instead of creating a new one.
+
+## Azure Agentless Workload Scanning
+
+Costs include storage, compute, and NAT gateway.
+
+- Cost: ~$0.50 per VM per month (at scale, inclusive of storage, compute and NAT gateway)
+- NAT Gateway: $35.00 flat per month
 
 
 
