@@ -10,7 +10,7 @@ All costs are monthly estimates in USD.
 
 ### AWS
 
-- Agentless Workload Scanning: ~$1.00 per workload per month (at scale,inclusive of ECS compute and snapshot storage)
+- Agentless Workload Scanning: ~$1.00 per workload per month (at scale, inclusive of ECS compute and snapshot storage)
 
 Additional costs if AWS accounts are in a different region from the Lacework instance (eg. ap-southeast-2 for Sydney, us-east-1 for Virginia, eu-central-1 for Frankfurt, ap-southeast-1 for Singapore):
 
